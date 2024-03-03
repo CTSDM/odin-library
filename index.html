@@ -1,15 +1,61 @@
 <!DOCTYPE>
 <html lang="en">
     <head>
-    <meta name="viewport" content="width=device-width, initial-scale = 1.0">
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="./style.css">
-    <script src="./script.js" defer></script>
-    <title>My library with no memory</title>
+        <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="./style.css">
+        <script src="./script.js" defer></script>
+        <title>My library with no memory</title>
     </head>
     <body>
-        basic template
-        <br>
-        nothing has been done yet!
+        <div class="container">
+            <div class="header">
+                <div class="name-library">
+                    WELCOME TO THE LIBRARY!
+                </div>
+                <div class="welcome">
+                    <div class="user-info">
+                        <div>
+                            Felix 
+                        </div>
+                        <div>
+                            @chano
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <dialog>
+                <div class="modal">
+                    <form action="none">
+                    <div>
+                        <label for="name">Book title: </label>
+                        <input type="text" name="title" required autocomplete="off" autofocus>
+                    </div>
+                    <div>
+                        <label for="author">Author: </label>
+                        <input type="text" name="author" required> 
+                    </div>
+                    <div>
+                        <label for="pages">Number of pages: </label>
+                        <input type="number" name="pages" required min="1" max="9999"> 
+                    </div>
+                    <button autofocus>Close</button>
+                    <button class="submit" type="submit">Confirm</button>
+                    </form>
+                </div>
+            </dialog>
+            <div class="book-adder">
+                <div>Add a new book --></div>
+                <div class="add-img">
+                    <img src="./images/plus.svg" alt="add-symbol">
+                </div>
+            </div>
+            <div class="content">
+
+            </div>
+            <div class="footer">
+
+            </div>
+        </div>
     </body>
 </html>
