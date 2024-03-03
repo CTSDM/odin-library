@@ -1,4 +1,4 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale = 1.0">
@@ -27,20 +27,27 @@
             <dialog id="dialog">
                 <div class="modal">
                     <form method="dialog">
+                        <span>Add Book</span>
                         <div>
-                            <label for="name">Book title: </label>
-                            <input type="text" name="title" required autocomplete="off" autofocus>
+                            <label for="title">TITLE</label>
+                            <input type="text" id="title" name="title" required autocomplete="off" autofocus>
                         </div>
                         <div>
-                            <label for="author">Author: </label>
-                            <input type="text" name="author" required> 
+                            <label for="author">AUTHOR</label>
+                            <input type="text" id="author" name="author" required> 
                         </div>
                         <div>
-                            <label for="pages">Number of pages: </label>
-                            <input type="number" name="pages" required min="1" max="9999"> 
+                            <label for="pages">NUMBER OF PAGES</label>
+                            <input type="number" id="pages" name="pages" required min="1" max="9999"> 
                         </div>
-                        <button type="button">Close</button>
-                        <button class="submit" type="submit">Confirm</button>
+                        <div class="book-finished">
+                            <span>Have you read it?</span>
+                            <input type="checkbox" name="finished" >
+                        </div>
+                            <div class="buttons">
+                                <button type="button">Close</button>
+                                <button class="submit" type="submit">Confirm</button>
+                            </div>
                     </form>
                 </div>
             </dialog>

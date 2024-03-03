@@ -6,6 +6,7 @@ const body = document.querySelector("body");
 const inputTitle = document.querySelector("input[name='title']");
 const inputAuthor = document.querySelector("input[name='author']");
 const inputPages = document.querySelector("input[name='pages']");
+const inputBookRead = document.querySelector("input[type='checkbox']");
 const cardsContainer = document.querySelector(".container-books");
 const book_class_names = ["book-title", "author-name", "n_pages", "read"];
 const myLibrary = [];
@@ -17,24 +18,22 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
-function addBookToLibrary() {
-    // let's implement modals somehow...
-}
-
 addImg.addEventListener("click", () => {
     dialog.showModal();
 });
 
 closeButton.addEventListener("click", (e) => {
     e.preventDefault();
+    document.querySelector("form").reset();
     dialog.close();
 });
 
 confirmBookButton.addEventListener("click", (e) => {
-    if(inputTitle.checkValidity() && inputAuthor.checkValidity() && inputPages.checkValidity()) {
+    if(inputTitle.checkValidity() && inputAuthor.checkValidity() && inputPages.checkValidity() ) {
         e.preventDefault();
-        myLibrary.push(new Book(inputTitle.value, inputAuthor.value, inputPages.value));
+        myLibrary.push(new Book(inputTitle.value, inputAuthor.value, inputPages.value, inputBookRead.checked));
         addBookDOM();
+        document.querySelector("form").reset();
         dialog.close();
     }
 })
@@ -78,6 +77,9 @@ function deleteBookBoom(e) {
 // close dialog when clicked outside of the dialog
 dialog.addEventListener("click", (e) => {
     if (e.target === dialog)
+    {
+        document.querySelector("form").reset();
         dialog.close();
+    }
 })
 
