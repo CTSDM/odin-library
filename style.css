@@ -49,3 +49,14 @@ dialog {
 .modal {
     padding: 10px;
 }
+
+.container-books {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 200px);
+    gap: 20px;
+}
+
+.card-item {
+    background-color: grey;
+}
+

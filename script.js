@@ -6,7 +6,8 @@ const body = document.querySelector("body");
 const inputTitle = document.querySelector("input[name='title']");
 const inputAuthor = document.querySelector("input[name='author']");
 const inputPages = document.querySelector("input[name='pages']");
-let nBooks = 0;
+const cardsContainer = document.querySelector(".container-books");
+const book_class_names = ["book-title", "author-name", "n_pages", "read"];
 const myLibrary = [];
 
 function Book(title, author, pages, read) {
@@ -31,11 +32,27 @@ closeButton.addEventListener("click", () => {
 confirmBookButton.addEventListener("click", (e) => {
     if(inputTitle.checkValidity() && inputAuthor.checkValidity() && inputPages.checkValidity()) {
         e.preventDefault();
-        console.log("halllooo");
         myLibrary.push(new Book(inputTitle.value, inputAuthor.value, inputPages.value));
+        addBookDOM();
         dialog.close();
     }
 })
+
+function addBookDOM() {
+    const card = document.createElement("div");
+    card.classList.add("card-item");
+    Object.entries(myLibrary[myLibrary.length - 1]).forEach((pairKeyValue, index) => {
+        const div_temp = document.createElement("div");
+        div_temp.classList.add(book_class_names[index]);
+        if (index !== 3){
+            div_temp.textContent = pairKeyValue[1];
+        } else {
+            div_temp.textContent = pairKeyValue[1] ? "Already read" : "Not read yet";
+        }
+        card.appendChild(div_temp);
+    })
+    cardsContainer.appendChild(card);
+}
 
 // close dialog when clicked outside of the dialog
 dialog.addEventListener("click", (e) => {
