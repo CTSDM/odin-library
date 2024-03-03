@@ -40,7 +40,13 @@ confirmBookButton.addEventListener("click", (e) => {
 
 function addBookDOM() {
     const card = document.createElement("div");
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add("delete");
+    deleteButton.textContent = "Delete";
+    deleteButton.type = "button";
+    deleteButton.addEventListener("click", deleteBookBoom);
     card.classList.add("card-item");
+    card.dataset.index = myLibrary.length - 1;
     Object.entries(myLibrary[myLibrary.length - 1]).forEach((pairKeyValue, index) => {
         const div_temp = document.createElement("div");
         div_temp.classList.add(book_class_names[index]);
@@ -51,7 +57,21 @@ function addBookDOM() {
         }
         card.appendChild(div_temp);
     })
+    card.appendChild(deleteButton);
     cardsContainer.appendChild(card);
+}
+
+function deleteBookBoom(e) {
+    const index = +e.target.parentElement.dataset.index;
+    const cardsNodeList = e.target.parentElement.parentElement.childNodes;
+    // update the data-index of the not deleted nodes if needed
+    for (let i = index; i < cardsNodeList.length - 1; ++i) {
+        cardsNodeList[i + 1].dataset.index = i;
+    }
+    // delete node
+    e.target.parentElement.remove(); 
+    // update myLibrary
+    myLibrary.splice(index, 1);
 }
 
 // close dialog when clicked outside of the dialog
