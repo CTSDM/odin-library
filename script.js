@@ -25,7 +25,8 @@ addImg.addEventListener("click", () => {
     dialog.showModal();
 });
 
-closeButton.addEventListener("click", () => {
+closeButton.addEventListener("click", (e) => {
+    e.preventDefault();
     dialog.close();
 });
 
