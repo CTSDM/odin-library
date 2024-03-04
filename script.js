@@ -8,8 +8,12 @@ const inputAuthor = document.querySelector("input[name='author']");
 const inputPages = document.querySelector("input[name='pages']");
 const inputBookRead = document.querySelector("input[type='checkbox']");
 const cardsContainer = document.querySelector(".container-books");
-const book_class_names = ["book-title", "author-name", "n_pages", "read"];
+const bookClassNames= ["book-title", "author-name", "n-pages", "read"];
+const readStatus = ["Already read", "Haven't read yet"];
 const myLibrary = [];
+const booksDefault = ["No Longer Human", "The Setting Sun", "Meditations"];
+const authorsDefault = ["Osamu Dazai", "Osamu Dazai", "Marcus Aurelius"];  
+const pagesDefault = ["124", "148", "219"]
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -44,24 +48,35 @@ function addBookDOM() {
     deleteButton.classList.add("delete");
     deleteButton.textContent = "Delete";
     deleteButton.type = "button";
-    deleteButton.addEventListener("click", deleteBookBoom);
+    deleteButton.addEventListener("click", deleteBookDOM);
     card.classList.add("card-item");
     card.dataset.index = myLibrary.length - 1;
     Object.entries(myLibrary[myLibrary.length - 1]).forEach((pairKeyValue, index) => {
-        const div_temp = document.createElement("div");
-        div_temp.classList.add(book_class_names[index]);
+        const divTemp = document.createElement("div");
+        divTemp.classList.add(bookClassNames[index]);
         if (index !== 3){
-            div_temp.textContent = pairKeyValue[1];
+            divTemp.textContent = pairKeyValue[1];
         } else {
-            div_temp.textContent = pairKeyValue[1] ? "Already read" : "Not read yet";
+            const divStatus = document.createElement("div");
+            const buttonCheck = document.createElement("input");
+            buttonCheck.type = "checkbox";
+            divStatus.textContent = pairKeyValue[1] ? readStatus[0] : readStatus[1]; 
+            buttonCheck.checked = pairKeyValue[1];
+            divTemp.appendChild(divStatus);
+            divTemp.appendChild(buttonCheck);
+            divTemp.classList = "read-status";
+
+            buttonCheck.addEventListener("click", (e) => {
+                e.target.parentElement.childNodes[0].textContent = e.target.checked ? readStatus[0] : readStatus[1];
+            })
         }
-        card.appendChild(div_temp);
+        card.appendChild(divTemp);
     })
     card.appendChild(deleteButton);
     cardsContainer.appendChild(card);
 }
 
-function deleteBookBoom(e) {
+function deleteBookDOM(e) {
     const index = +e.target.parentElement.dataset.index;
     const cardsNodeList = e.target.parentElement.parentElement.childNodes;
     // update the data-index of the not deleted nodes if needed
