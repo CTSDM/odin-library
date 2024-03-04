@@ -22,7 +22,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 20px;
+    padding: 20px;
 }
 
 .book-adder {
@@ -70,14 +70,16 @@ dialog {
 
 .container-books {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 200px);
+    grid-template-columns: repeat(auto-fit, 250px);
     gap: 20px;
+    padding: 20px;
 }
 
 .card-item {
     background-color: #f7fee7;
     padding: 15px;
     display: grid;
+    grid-template-rows: 2fr;
     gap: 15px;
     border-radius: 20px;
 }

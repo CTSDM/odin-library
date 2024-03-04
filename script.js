@@ -13,7 +13,8 @@ const readStatus = ["Already read", "Haven't read yet"];
 const myLibrary = [];
 const booksDefault = ["No Longer Human", "The Setting Sun", "Meditations"];
 const authorsDefault = ["Osamu Dazai", "Osamu Dazai", "Marcus Aurelius"];  
-const pagesDefault = ["124", "148", "219"]
+const pagesDefault = ["124", "148", "219"];
+const readDefault = [true, true, true];
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -41,6 +42,17 @@ confirmBookButton.addEventListener("click", (e) => {
         dialog.close();
     }
 })
+
+function initializeBooksDefault() {
+    for (let i = 0; i < booksDefault.length; ++i) {
+        let book = booksDefault[i];
+        let author = authorsDefault[i];
+        let pages = pagesDefault[i];
+        let read = readDefault[i];
+        myLibrary.push(new Book(book, author, pages, read));
+        addBookDOM();
+    }
+}
 
 function addBookDOM() {
     const card = document.createElement("div");
@@ -98,3 +110,4 @@ dialog.addEventListener("click", (e) => {
     }
 })
 
+initializeBooksDefault();
