@@ -16,11 +16,13 @@ const authorsDefault = ["Osamu Dazai", "Osamu Dazai", "Marcus Aurelius"];
 const pagesDefault = ["124", "148", "219"];
 const readDefault = [true, true, true];
 
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
 }
 
 addImg.addEventListener("click", () => {
